@@ -17,10 +17,10 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
-                            <a href="{{ route('admin.categorys.edit', $category->id) }}" class="btn btn-sm btn-warning">
+                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-warning">
                                 Edit
                             </a>
-                            <a href="{{ route('admin.categorys.delete', parameters: $category->id) }}"
+                            <a href="{{ route('admin.categories.delete', parameters: $category->id) }}"
                                 class="btn btn-sm btn-danger">
                                 Delete
                             </a>
