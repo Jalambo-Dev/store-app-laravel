@@ -1,32 +1,26 @@
 @extends('layout.admin')
 @section('content')
     <div class="container mt-5">
-        <h2 class="mb-4">Product List</h2>
+        <h2 class="mb-4">Category List</h2>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Description</th>
+                    <th>Category Name</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Example Product Row -->
-                @foreach ($products as $product)
+                <!-- Example Category Row -->
+                @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $product->id }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->quantity }}</td>
-                        <td>{{ $product->price }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
                         <td>
-                            <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-warning">
+                            <a href="{{ route('admin.categorys.edit', $category->id) }}" class="btn btn-sm btn-warning">
                                 Edit
                             </a>
-                            <a href="{{ route('admin.products.delete', parameters: $product->id) }}"
+                            <a href="{{ route('admin.categorys.delete', parameters: $category->id) }}"
                                 class="btn btn-sm btn-danger">
                                 Delete
                             </a>
