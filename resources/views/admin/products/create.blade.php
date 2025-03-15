@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Product</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
+@extends('layout.admin')
+@section('content')
     <div class="container mt-5">
         <h2 class="mb-4">Add New Product</h2>
         <form>
@@ -32,6 +22,19 @@
                     required>
             </div>
 
+            <!-- Category -->
+            <div class="mb-3">
+                <label for="productCategory" class="form-label">Category</label>
+                <select class="form-control" id="productCategory" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="home">Home</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="sports">Sports</option>
+                </select>
+            </div>
+
             <!-- Description -->
             <div class="mb-3">
                 <label for="productDescription" class="form-label">Description</label>
@@ -42,9 +45,4 @@
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
     </div>
-
-    <!-- Bootstrap JS (optional, for certain features like dropdowns, modals, etc.) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+@endsection
