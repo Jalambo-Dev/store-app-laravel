@@ -2,7 +2,8 @@
 @section('content')
     <div class="container mt-5">
         <h2 class="mb-4">Add New Product</h2>
-        <form>
+        <form action="{{ route('admin.products.store') }}" method="POST">
+            @csrf
             <!-- Product Name -->
             <div class="mb-3">
                 <label for="productName" class="form-label">Product Name</label>
