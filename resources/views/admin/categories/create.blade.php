@@ -6,8 +6,8 @@
             @csrf
             <!-- Category Name -->
             <div class="mb-3">
-                <label for="categoryName" class="form-label">Category Name</label>
-                <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
+                <label for="name" class="form-label">Category Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" required>
             </div>
 
             <!-- Submit Button -->

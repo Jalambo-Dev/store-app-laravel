@@ -11,7 +11,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example Category Row -->
                 @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
@@ -20,15 +19,15 @@
                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-warning">
                                 Edit
                             </a>
-                            <a href="{{ route('admin.categories.delete', parameters: $category->id) }}"
-                                class="btn btn-sm btn-danger">
-                                Delete
-                            </a>
-                            {{-- <button class="btn btn-sm btn-danger">Delete</button> --}}
+                            <form action="{{ route('admin.categories.delete', $category->id) }}" method="POST"
+                                style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
-
             </tbody>
         </table>
     </div>
