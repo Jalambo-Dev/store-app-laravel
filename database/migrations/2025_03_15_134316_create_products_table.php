@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price', 8, 2);
             $table->text('description');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Add this line
             $table->timestamps();
         });
     }

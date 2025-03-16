@@ -14,7 +14,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example Product Row -->
                 @foreach ($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
@@ -26,15 +25,15 @@
                             <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-warning">
                                 Edit
                             </a>
-                            <a href="{{ route('admin.products.delete', parameters: $product->id) }}"
-                                class="btn btn-sm btn-danger">
-                                Delete
-                            </a>
-                            {{-- <button class="btn btn-sm btn-danger">Delete</button> --}}
+                            <form action="{{ route('admin.products.delete', $product->id) }}" method="POST"
+                                style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
-
             </tbody>
         </table>
     </div>

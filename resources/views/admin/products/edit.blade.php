@@ -7,42 +7,39 @@
             @method('PATCH')
             <!-- Product Name -->
             <div class="mb-3">
-                <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" required value="{{ $product->name }}">
+                <label for="name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="name" name="name" required value="{{ $product->name }}">
             </div>
 
             <!-- Quantity -->
             <div class="mb-3">
-                <label for="productQuantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="productQuantity" required value="{{ $product->quantity }}">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" required value="{{ $product->quantity }}">
             </div>
 
             <!-- Price -->
             <div class="mb-3">
-                <label for="productPrice" class="form-label">Price</label>
-                <input type="number" step="0.01" class="form-control" id="productPrice" required
-                    value="{{ $product->price }}">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" step="0.01" class="form-control" id="price" name="price" required value="{{ $product->price }}">
             </div>
 
             <!-- Category -->
             <div class="mb-3">
-                <label for="productCategory" class="form-label">Category</label>
-                <select class="form-control" id="productCategory" required>
-                    <option value="" disabled selected>Select a category</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="home">Home</option>
-                    <option value="beauty">Beauty</option>
-                    <option value="sports">Sports</option>
+                <label for="category_id" class="form-label">Category</label>
+                <select class="form-control" id="category_id" name="category_id" required>
+                    <option value="" disabled>Select a category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
             <!-- Description -->
             <div class="mb-3">
-                <label for="productDescription" class="form-label">Description</label>
-                <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter product description">
-                    {{ $product->description }}
-                </textarea>
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3">{{ $product->description }}</textarea>
             </div>
 
             <!-- Submit Button -->

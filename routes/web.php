@@ -8,12 +8,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/create', [ProductController::class, 'create']);
-Route::post('/products/store', [ProductController::class, 'store']);
-Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
-Route::patch('/products/update/{id}', [ProductController::class, 'update']);
-Route::get('/products/delete/{id}', [ProductController::class, 'destroy']);
+// Product Routes
+Route::prefix('admin')->group(function () {
+    Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/products/store', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
+    Route::patch('/products/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->name('admin.products.delete');
+});
 
 
 // Category Routes
