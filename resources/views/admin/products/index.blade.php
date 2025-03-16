@@ -2,6 +2,15 @@
 @section('content')
     <div class="container mt-5">
         <h2 class="mb-4">Product List</h2>
+
+        <!-- Add New Product Button -->
+        <div class="mb-3">
+            <a href="{{ route('admin.products.create') }}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Add New Product
+            </a>
+        </div>
+
+        <!-- Products Table -->
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>

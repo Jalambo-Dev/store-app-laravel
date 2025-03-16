@@ -292,7 +292,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{{ route('admin.products.index') }}">
                                     <svg class="bi">
                                         <use xlink:href="#cart" />
                                     </svg>
@@ -300,7 +301,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{{ route('admin.categories.index') }}">
                                     <svg class="bi">
                                         <use xlink:href="#list" />
                                     </svg>

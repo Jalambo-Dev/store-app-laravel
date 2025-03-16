@@ -1,6 +1,15 @@
 @extends('layout.admin')
 @section('content')
     <div class="container mt-5">
+
+        <!-- Add New Category Button -->
+        <div class="mb-3">
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Add New Category
+            </a>
+        </div>
+
+        <!-- Categories Table -->
         <h2 class="mb-4">Category List</h2>
         <table class="table table-bordered table-striped">
             <thead>
