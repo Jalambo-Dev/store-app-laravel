@@ -14,7 +14,8 @@ class Product extends Model
         'quantity',
         'price',
         'description',
-        'category_id', // Ensure this is included
+        'category_id',
+        'image_url', // Add this line
     ];
 
     // Define the relationship with the Category model

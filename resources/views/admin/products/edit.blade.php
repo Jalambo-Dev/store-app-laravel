@@ -11,16 +11,29 @@
                 <input type="text" class="form-control" id="name" name="name" required value="{{ $product->name }}">
             </div>
 
+            <!-- Product Image -->
+            <div class="mb-3">
+                <label for="image_url" class="form-label">Product Image URL</label>
+                <input type="url" class="form-control" id="image_url" name="image_url" placeholder="Enter image URL"
+                    value="{{ $product->image_url }}">
+                @if ($product->image_url)
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="img-thumbnail mt-2"
+                        width="100">
+                @endif
+            </div>
+
             <!-- Quantity -->
             <div class="mb-3">
                 <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" required value="{{ $product->quantity }}">
+                <input type="number" class="form-control" id="quantity" name="quantity" required
+                    value="{{ $product->quantity }}">
             </div>
 
             <!-- Price -->
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" step="0.01" class="form-control" id="price" name="price" required value="{{ $product->price }}">
+                <input type="number" step="0.01" class="form-control" id="price" name="price" required
+                    value="{{ $product->price }}">
             </div>
 
             <!-- Category -->

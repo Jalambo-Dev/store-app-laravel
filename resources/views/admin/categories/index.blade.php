@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('content')
     <div class="container mt-5">
-
+        <h2 class="mb-4">Category List</h2>
         <!-- Add New Category Button -->
         <div class="mb-3">
             <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
@@ -10,7 +10,7 @@
         </div>
 
         <!-- Categories Table -->
-        <h2 class="mb-4">Category List</h2>
+
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>

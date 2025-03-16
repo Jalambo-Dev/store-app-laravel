@@ -23,13 +23,25 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->quantity = $request->quantity;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->category_id = $request->category_id; // Use category_id instead of category
-        $product->save();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'quantity' => 'required|integer',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'image_url' => 'nullable|url', // Validate that the input is a valid URL
+        ]);
+
+        // Create the product
+        Product::create([
+            'name' => $request->name,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'image_url' => $request->image_url, // Store the image URL
+        ]);
+
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
     }
 
@@ -43,13 +55,27 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'quantity' => 'required|integer',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'image_url' => 'nullable|url', // Validate that the input is a valid URL
+        ]);
+
         $product = Product::findOrFail($id);
-        $product->name = $request->name;
-        $product->quantity = $request->quantity;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->category_id = $request->category_id; // Use category_id instead of category
-        $product->save();
+
+        // Update the product
+        $product->update([
+            'name' => $request->name,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'image_url' => $request->image_url, // Update the image URL
+        ]);
+
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
     }
 
@@ -57,5 +83,15 @@ class ProductController extends Controller
     {
         Product::destroy($id);
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
+    }
+
+
+    public function frontPage()
+    {
+        // Fetch all products from the database
+        $products = Product::all();
+
+        // Pass the products to the front page view
+        return view('front.index', compact('products'));
     }
 }

@@ -28,3 +28,7 @@ Route::prefix('admin')->group(function () {
     Route::patch('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categories/delete/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
 });
+
+
+// Front page route
+Route::get('/', [ProductController::class, 'frontPage'])->name('front.page');
