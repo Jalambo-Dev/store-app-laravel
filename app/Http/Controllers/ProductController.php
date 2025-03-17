@@ -14,6 +14,8 @@ class ProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
 
+
+
     public function create()
     {
         // Fetch all categories from the database
@@ -86,12 +88,16 @@ class ProductController extends Controller
     }
 
 
+    // In ProductController.php, update the frontPage method
     public function frontPage()
     {
         // Fetch all products from the database
         $products = Product::all();
 
-        // Pass the products to the front page view
-        return view('front.index', compact('products'));
+        // Fetch all categories for the filter
+        $categories = Category::all();
+
+        // Pass the products and categories to the front page view
+        return view('front.index', compact('products', 'categories'));
     }
 }
