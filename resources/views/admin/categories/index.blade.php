@@ -39,5 +39,9 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- At the bottom of your table -->
+        <div class="d-flex justify-content-end mt-4">
+            {{ $categories->links('pagination::bootstrap-4') }}
+        </div>
     </div>
 @endsection
