@@ -18,18 +18,16 @@
                     <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
-                    {{-- <th>Description</th> --}}
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $product)
                     <tr>
-                        <td>{{ $product->id }}</td>
+                        <td>{{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->quantity }}</td>
-                        <td>{{ $product->price }}</td>
-                        {{-- <td>{{ $product->description }}</td> --}}
+                        <td>{{ number_format($product->price, 2) }}</td>
                         <td>
                             <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-warning">
                                 Edit
@@ -45,5 +43,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-start mt-4">
+            {{ $products->links('pagination::bootstrap-4') }}
+        </div>
     </div>
 @endsection

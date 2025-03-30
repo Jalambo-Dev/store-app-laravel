@@ -10,7 +10,7 @@ class CategoryController extends Controller
     // Display all categories with pagination
     public function index()
     {
-        $categories = DB::table('categories')->paginate(5); // Changed from get() to paginate(10)
+        $categories = DB::table('categories')->paginate(10); // Changed from get() to paginate(10)
         return view('admin.categories.index', compact('categories'));
     }
 

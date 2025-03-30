@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category; // Import the Category model
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        //         $categories = DB::table('categories')->paginate(10); // Changed from get() to paginate(10)
+
+        // $products = Product::all();
+        $products = DB::table('products')->paginate(10); // Changed from get() to paginate(10)
+
         return view('admin.products.index', compact('products'));
     }
 

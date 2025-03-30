@@ -10,7 +10,6 @@
         </div>
 
         <!-- Categories Table -->
-
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -22,7 +21,7 @@
             <tbody>
                 @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $category->id }}</td>
+                        <td>{{ ($categories->currentPage() - 1) * $categories->perPage() + $loop->iteration }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-warning">
@@ -39,8 +38,8 @@
                 @endforeach
             </tbody>
         </table>
-        <!-- At the bottom of your table -->
-        <div class="d-flex justify-content-end mt-4">
+        <!-- Pagination -->
+        <div class="d-flex justify-content-start mt-4">
             {{ $categories->links('pagination::bootstrap-4') }}
         </div>
     </div>
